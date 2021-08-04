@@ -9,7 +9,7 @@ class Customers extends Controller
 {
     public function index()
     {
-        $rawData = Http::get("http://niceye-node.test:3000/customers")->body();
+        $rawData = Http::get($_ENV['APP_API_URL'] . ":3000/customers")->body();
         $customers = json_decode($rawData);
         return view('customers', ['customers' => $customers]);
     }
